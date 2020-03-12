@@ -11,6 +11,7 @@
         <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
         <b-nav-item><router-link to="/about">About</router-link></b-nav-item>
         <b-nav-item><router-link to="/contact">Contact</router-link></b-nav-item>
+         <b-nav-item><router-link to="/search">Search</router-link></b-nav-item>
         <b-nav-item href="#" disabled>Disabled</b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
@@ -39,7 +40,9 @@
     </b-collapse>
   </b-navbar>
     </div>
-    <router-view/>
+    <div class="container">
+        <router-view/>
+    </div>
   </div>
 </template>
 <script>
