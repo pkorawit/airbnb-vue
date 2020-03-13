@@ -10,12 +10,12 @@
             </b-input-group-append>
           </b-input-group>
         </div>
-      <div class="text-center mt-5" v-show="loading">
-        <b-spinner type="grow" variant="primary" label="Spinning"></b-spinner>
-      </div>  
+        <div class="text-center mt-5" v-show="loading">
+          <b-spinner type="grow" variant="primary" label="Spinning"></b-spinner>
+        </div>
       </div>
     </div>
-    <div class="row mt-5">      
+    <div class="row mt-5">
       <div class="col-lg-4 col-sm-12 text-center" v-for="list in listings" :key="list._id">
         <b-card
           :title="list.name"
@@ -27,8 +27,9 @@
           class="mb-2"
         >
           <b-card-text>{{ list.summary.substring(0,50) + "..." }}</b-card-text>
-
-          <b-button href="#" variant="primary">View Details</b-button>
+          <router-link :to="`/detail/${list._id}`">
+            <b-button variant="primary">View Details</b-button>
+          </router-link>
         </b-card>
       </div>
     </div>
@@ -47,7 +48,7 @@ export default {
 
   methods: {
     search() {
-      this.loading = true;  
+      this.loading = true;
       console.log(this.keyword);
       let url =
         "https://airbnbapidemo.azurewebsites.net/api/airbnb/listings/city/";
@@ -55,7 +56,7 @@ export default {
       axios.get(url).then(response => {
         console.log(response.data);
         this.listings = response.data;
-        this.loading = false; 
+        this.loading = false;
       });
     }
   }
